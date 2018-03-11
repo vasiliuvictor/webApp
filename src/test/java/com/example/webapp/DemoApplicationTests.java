@@ -17,7 +17,7 @@ public class DemoApplicationTests {
 
     @Test
     public void testMessageByLocaleService() throws Exception{
-        String expectedResult = "Bootstrap starter template";
+        String expectedResult = "Welcome to the Mars";
         String messageId ="index.main.callout";
         String actual = i18NService.getMssage(messageId);
         Assert.assertEquals("the actual and expected Strings don't match",expectedResult,actual);
