@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header">
+
+</head>
+<body>
+
+    <div th:replace="common/navbar :: common-navbar"/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="text-center" th:text="#{copy.h1.text}"></h1>
+                <p class="lead" th:text="#{copy.p.lead}"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="container marketing">
+        <div class="row">
+            <div class="col-lg-4 span4">
+                <a href="http://www.google.ro">
+                    <img class="img-circle"
+                    src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDuAAgAAQAAAAAAABGbAAAAJGZmODNmNWE5LTljMGUtNDIzZi1iMzJjLTg1NzdmYTYyYmY4OQ.bin"
+                    alt="Vasiliu Victor" width="140" height="140"/>
+                </a>
+                <h2> Victor Andrei <small class="member-title">Junior Programmer</small> </h2>
+            <div class="span4 collapse-group">
+                <p class="collapse text-justify" th:text="#{copy.junior.programmer.intro}"></p>
+                <p ><a class="btn btn-primary btn-collapse" href="#" role="button" th:text="#{copy.viewdetails.button}"></a> </p>
+            </div>
+            </div>
+
+            <div class="col-lg-4 span4">
+                <a href="http://www.google.ro">
+                    <img class="img-circle"
+                         src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDuAAgAAQAAAAAAABGbAAAAJGZmODNmNWE5LTljMGUtNDIzZi1iMzJjLTg1NzdmYTYyYmY4OQ.bin"
+                         alt="Vasiliu Victor" width="140" height="140"/>
+                </a>
+                <h2> Victor Andrei <small class="member-title">Junior Programmer</small> </h2>
+                <div class="span4 collapse-group">
+                    <p class="collapse text-justify" th:text="#{copy.junior.programmer.intro}"></p>
+                    <p><a class="btn btn-primary btn-collapse" href="#" role="button" th:text="#{copy.viewdetails.button}"></a> </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 span4">
+                <a href="http://www.google.ro">
+                    <img class="img-circle"
+                         src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAQDuAAgAAQAAAAAAABGbAAAAJGZmODNmNWE5LTljMGUtNDIzZi1iMzJjLTg1NzdmYTYyYmY4OQ.bin"
+                         alt="Vasiliu Victor" width="140" height="140"/>
+                </a>
+                <h2> Victor Andrei <small class="member-title">Junior Programmer</small> </h2>
+                <div class="span4 collapse-group">
+                    <p class="collapse text-justify" th:text="#{copy.junior.programmer.intro}"></p>
+                    <p><a class="btn btn-primary btn-collapse" href="#" role="button" th:text="#{copy.viewdetails.button}"></a> </p>
+                </div>
+            </div>
+
+        </div>
+
+
+    <!-- Features -->
+    <hr class="featurette-divider"/>
+
+    <div class="featurette">
+        <img class="featurette-image pull-right" th:src="@{/images/Mozilla-Thunderbird-icon.png}"/>
+        <h2 class="featurette-heading">Vrei sa trimiti un mail ? <span class="muted"> Pune pasarea la incercare !</span></h2>
+        <p class="lead"> Cel mai performant sistem de mailing</p>
+    </div>
+
+        <hr class="featurette-divider"/>
+
+        <div class="featurette">
+            <img class="featurette-image pull-left" th:src="@{/images/Opera-icon.png}"/>
+            <h2 class="featurette-heading">Un moment de rapiditate !<span class="muted"> Incearca-l si te vei convinge</span></h2>
+            <p class="lead"> Cel mai performant web browser</p>
+        </div>
+
+        <hr class="featurette-divider"/>
+
+        <div class="featurette">
+            <img class="featurette-image pull-right" th:src="@{/images/skype-icon.png}"/>
+            <h2 class="featurette-heading">Stai in legatura cu familia <span class="muted"> si nu numai</span></h2>
+            <p class="lead"> Incearca astazi partenerul nostru Skype</p>
+        </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2018 webApp.com &middot;
+        <a href="#">Privacy &middot;</a>
+            <a href="#">Terms</a>
+        </p>
+    </footer>
+    </div>
+
+<div th:replace="common/header :: before-body-scripts"/>
+
+</body>
+</html>
