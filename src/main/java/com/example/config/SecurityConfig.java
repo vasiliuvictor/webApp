@@ -5,7 +5,6 @@ package com.example.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -38,30 +37,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     };
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/resources/**");
-    }
-
-
-
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.csrf().disable();
-        http.authorizeRequests().antMatchers("/about","/contact");
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-        http.authorizeRequests().and().formLogin()
-                .loginProcessingUrl("/j_spring_security_check")
-                .loginPage("/login")
-                .defaultSuccessUrl("/payload")
-                .failureUrl("/login?error=true")
-                .usernameParameter("user")
-                .passwordParameter("user");
-
-
+        http
+                .authorizeRequests()
+                .antMatchers(PUBLIC_MATCHERS).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/payload")
+                .failureUrl("/login?error").permitAll()
+                .and()
+                .logout().permitAll();
     }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .withUser("user").password("password")
+                .roles("USER");
+    }
+
+
+
+
 
 }

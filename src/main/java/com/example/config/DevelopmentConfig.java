@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Configuration
 @Profile("dev")
-@PropertySource("file:///${user.home}/Bootstrap app/webApp/application-dev.properties")
+@PropertySource("file:///${user.home}/Desktop/Bootstrap app/webApp/application-dev.properties")
 public class DevelopmentConfig {
 
     @Bean

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @Profile("prod")
-@PropertySource("file:///${user.home}/Bootstrap app/webApp/application-prod.properties")
+@PropertySource("file:///${user.home}/Desktop/Bootstrap app/webApp/application-prod.properties")
 public class ProductionConfig {
 
 
