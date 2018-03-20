@@ -1,5 +1,7 @@
 package com.example.backend.persistance.domain.backend;
 
+import com.example.utils.RolesEnum;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -21,6 +23,11 @@ public class Role implements Serializable {
 
     @OneToMany(mappedBy = "role",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new HashSet<>();
+
+    public Role(RolesEnum rolesEnum){
+        this.id = rolesEnum.getId();
+        this.name = rolesEnum.getRoleName();
+    }
 
     public Set<UserRole> getUserRoles() {
         return userRoles;
