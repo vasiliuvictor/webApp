@@ -23,8 +23,10 @@ public class User implements Serializable,UserDetails {
     private long id;
 
 
+    @Column(unique = true)
     private String username;
 
+    @Column(unique = true)
     private String password;
 
     private String email;
