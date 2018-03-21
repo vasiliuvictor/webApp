@@ -15,8 +15,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +32,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserSecurityService userSecurityService;
+
+    private static final String SALT ="sf09xc8ds32cddsx";
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder(12,new SecureRandom(SALT.getBytes()));
+    }
 
     /** Public URLs. */
     private static final String[] PUBLIC_MATCHERS = {
@@ -71,7 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("password")
                 .roles("USER");
         auth
-                .userDetailsService(userSecurityService);
+                .userDetailsService(userSecurityService)
+                .passwordEncoder(passwordEncoder());
     }
 
 
