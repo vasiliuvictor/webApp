@@ -6,17 +6,13 @@ import com.example.backend.persistance.domain.backend.UserRole;
 import com.example.backend.service.UserService;
 import com.example.utils.PlansEnum;
 import com.example.utils.RolesEnum;
-import com.example.utils.UsersUtils;
+import com.example.utils.UserUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +33,7 @@ public class DemoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... strings) throws Exception {
 
-		User user = UsersUtils.createBasicUser();
+		User user = UserUtils.createBasicUser();
 		Set<UserRole> userRoles = new HashSet<>();
 		userRoles.add(new UserRole(user,new Role(RolesEnum.BASIC)));
 		LOG.debug("Creating user with username {}", user.getUsername());

@@ -1,6 +1,7 @@
 
 package com.example.config;
 
+import com.example.backend.service.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private Environment environment;
+
+    @Autowired
+    private UserSecurityService userSecurityService;
 
     /** Public URLs. */
     private static final String[] PUBLIC_MATCHERS = {
@@ -66,6 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("user").password("password")
                 .roles("USER");
+        auth
+                .userDetailsService(userSecurityService);
     }
 
 
