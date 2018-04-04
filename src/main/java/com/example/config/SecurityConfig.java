@@ -2,6 +2,7 @@
 package com.example.config;
 
 import com.example.backend.service.UserSecurityService;
+import com.example.webapp.controllers.ForgotMyPasswordController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -51,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/contact/**",
             "/error/**/*",
             "/console/**",
+            ForgotMyPasswordController.FORGOT_PASSWORD_URL_MAPPING,
 
     };
 

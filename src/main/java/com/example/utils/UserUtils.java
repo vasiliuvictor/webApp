@@ -1,6 +1,9 @@
 package com.example.utils;
 
 import com.example.backend.persistance.domain.backend.User;
+import com.example.webapp.controllers.ForgotMyPasswordController;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class UserUtils {
 
@@ -22,5 +25,21 @@ public class UserUtils {
         user.setProfileImageUrl("http://images.ro");
 
         return user;
+    }
+
+    public static String createPasswordResetUrl(HttpServletRequest request, long userId, String token) {
+        String passwordResetUrl =
+                request.getScheme() +
+                        "://" +
+                        request.getServerName()+
+                        ":" +
+                        request.getServerPort() +
+                        request.getContextPath() +
+                        ForgotMyPasswordController.CHANGE_PASSWORD_PATH +
+                        "?id=" +
+                        userId +
+                        "&token="+
+                        token;
+        return passwordResetUrl;
     }
 }

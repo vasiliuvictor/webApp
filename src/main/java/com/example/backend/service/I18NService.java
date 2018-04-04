@@ -1,4 +1,4 @@
-package com.example.webapp.i18n;
+package com.example.backend.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
