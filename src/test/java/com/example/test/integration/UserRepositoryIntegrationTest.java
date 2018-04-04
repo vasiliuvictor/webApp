@@ -24,13 +24,14 @@
 
         import java.util.HashSet;
         import java.util.Set;
+        import java.util.UUID;
 
-/**
+        /**
  * Created by tedonema on 29/03/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = DemoApplication.class)
-public class UserIntegrationTest extends AbstractIntegrationTest {
+public class UserRepositoryIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired
     private PlanRepository planRepository;
@@ -97,6 +98,29 @@ public class UserIntegrationTest extends AbstractIntegrationTest {
         String email = testName.getMethodName()+"@yahoo.com";
         User basicUser = createUser(username,email);
         userRepository.delete(basicUser.getId());
+    }
+
+    @Test
+    public void testGetUserByEmail() throws Exception{
+        User user = createUser(testName);
+
+        User FoundUser = userRepository.findByEmail(user.getEmail());
+        Assert.assertNotNull(FoundUser);
+        Assert.assertNotNull(FoundUser.getId());
+    }
+
+    @Test
+    public void testUpdateUserPassword() throws Exception{
+        User user = createUser(testName);
+        Assert.assertNotNull(user);
+        Assert.assertNotNull(user.getId());
+
+        String newPass = UUID.randomUUID().toString();
+
+        userRepository.updateUserPassword(user.getId(),newPass);
+
+        user = userRepository.findOne(user.getId());
+        Assert.assertNotNull(newPass,user.getPassword());
     }
 
 }
